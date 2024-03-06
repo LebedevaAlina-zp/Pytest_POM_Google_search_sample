@@ -17,7 +17,8 @@ class MainPage(WebPage):
     search = WebElement(id='APjFqb')
 
     # Search button
-    search_run_button = WebElement(xpath='//div[@class="FPdoLc lJ9FBc"]/center/input[@name="btnK"]')
+    search_run_button = WebElement(name="btnK")
+    #search_run_button = WebElement(xpath='//div[@class="FPdoLc lJ9FBc"]/center/input[@name="btnK"]')
 
     # Titles of the search results
     search_results_titles = ManyWebElements(xpath='//h3[@class="LC20lb MBeuO DKV0Md"]')

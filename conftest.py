@@ -1,31 +1,43 @@
-#!/usr/bin/python3
-# -*- encoding=utf8 -*-
-
-# This is example shows how we can manage failed tests
-# and make screenshots after any failed test case.
-
 import pytest
 import allure
 import uuid
+import datetime
 
 from selenium import webdriver as selenium_wd
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options as ChromeOptions
+from selenium.webdriver.chrome.service import Service as ChromeService
+
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
+from selenium.webdriver.firefox.service import Service as FirefoxService
+
 
 
 @pytest.fixture(scope="session")
-def selenium_driver(request):
-    s = Service(r"D:\Selenium\chromedriver64.exe")
-    chrome_options = Options()
+def selenium_chromedriver(request):
+    s = ChromeService(r"D:\Selenium\chromedriver.exe")
+    chrome_options = ChromeOptions()
 
     driver = selenium_wd.Chrome(service=s, options=chrome_options)
     driver.maximize_window()
-    driver.implicitly_wait(5)
+    #driver.implicitly_wait(5)
 
     yield driver
 
     driver.quit()
 
+
+@pytest.fixture(scope="session")
+def selenium_firefoxdriver(request):
+    s = FirefoxService(r"D:\Selenium\geckodriver.exe")
+    firefox_options = FirefoxOptions()
+
+    driver = selenium_wd.Firefox(service=s, options=firefox_options)
+    driver.maximize_window()
+    #driver.implicitly_wait(5)
+
+    yield driver
+
+    driver.quit()
 
 
 @pytest.fixture
@@ -51,6 +63,8 @@ def pytest_runtest_makereport(item, call):
 
 @pytest.fixture
 def web_browser(request, selenium):
+    # This is example shows how we can manage failed tests
+    # and make screenshots after any failed test case.
 
     browser = selenium
     browser.set_window_size(1400, 1000)
