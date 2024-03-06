@@ -1,4 +1,6 @@
-_pycashe_
+__pycache__/
+pages/__pycache__/
+tests/__pycache__/
 .idea
 .pytest_cache
 
