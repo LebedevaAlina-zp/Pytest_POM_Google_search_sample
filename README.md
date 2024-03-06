@@ -26,7 +26,7 @@ of the page in case any test case will fail.
 
 1) To install all needed packages run in terminal: pip install -r requirements.txt
 
-2) Download corresponding Selenium WebDriver and remember the ~path to driver file. 
-For Chrome look, for example, here https://googlechromelabs.github.io/chrome-for-testing/
+2) Download corresponding Selenium WebDrivers and past the paths to driver files to selenium_chromedriver 
+and selenium_firefoxdriver fixtures in conftest.py.
 
-3) To run tests: pytest --driver Chrome --driver-path ~path\chromedriver.exe tests/
+3) Run tests

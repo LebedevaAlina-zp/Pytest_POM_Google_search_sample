@@ -1,0 +1,5 @@
+_pycashe_
+.idea
+.pytest_cache
+
+tests/screenshots/*
